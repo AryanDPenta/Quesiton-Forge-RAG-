@@ -10,18 +10,12 @@ class DocumentService:
     def upload_document(file):
         name = file.name
         file_type = name.split('.')[-1]
-
         doc = DocumentRepository.create_document(file, name, file_type)
-
         file_path = doc.file.path
-
         extracted_text = ContentExtractionService.extract_text(file_path, file_type)
-
         ContentRepository.save_content(doc, extracted_text)
-
     # 🔥 NEW: RAG processing
         RAGService.process_document(doc, extracted_text)
-
         return doc
 
     @staticmethod

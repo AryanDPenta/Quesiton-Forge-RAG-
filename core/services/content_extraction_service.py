@@ -1,5 +1,5 @@
 import os
-from pypdf import PdfReader     # ← new import
+from pypdf import PdfReader    
 from docx import Document as DocxDocument
 from pptx import Presentation
 import pdfplumber
@@ -90,11 +90,9 @@ class ContentExtractionService:
             return f.read()
     
     def _clean_text(text):
-        # Fix encoding issues but KEEP non-ASCII characters (don't strip them)
+        
         text = text.encode("utf-8", "ignore").decode("utf-8")
-        # Only remove actual control characters, not foreign scripts or symbols
         text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
-        # Collapse excessive whitespace
         text = re.sub(r'\n{3,}', '\n\n', text)
         text = re.sub(r'[ \t]+', ' ', text)
         return text.strip()
