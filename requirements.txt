@@ -1,6 +1,37 @@
-Django>=4.2
-gunicorn
-whitenoise
-psycopg2-binary
-dj-database-url
-python-dotenv
+# Core Django & REST Framework
+Django==5.2.13
+djangorestframework==3.17.1
+
+# Production server
+gunicorn==25.3.0
+
+# Database (PostgreSQL - recommended for Render)
+psycopg2-binary==2.9.11
+
+# Static files in production
+whitenoise==6.12.0
+
+# Environment variables (for local .env)
+python-dotenv==1.2.2
+
+# CORS (you already had this)
+django-cors-headers==4.9.0
+
+# Optional but useful for AI/ML features in your project
+openai==2.32.0
+groq==1.2.0
+google-generativeai==0.8.6
+
+# File handling & document processing
+pypdf==6.10.2
+pdfplumber==0.11.9
+python-docx==1.2.0
+python-pptx==1.0.2
+Pillow==12.2.0
+pytesseract==0.3.13
+
+# AI / Embeddings
+sentence-transformers==5.4.1
+transformers==5.5.4
+torch==2.11.0
+numpy==2.4.4
